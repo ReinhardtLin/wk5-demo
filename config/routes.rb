@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get '/auth/:provider/callback', :to => 'sessions#create'
+  get '/auth/failure', to: 'sessions#failure'
+  delete '/auth/signout', to: 'sessions#destroy'
+
+  root 'welcome#index'
+
   match ':controller(/:action(/:id(.:format)))', :via => :all
   # resources :events
 
